@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "lib": ["ESNext"],
+      "moduleResolution": "node",
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "removeComments": true,
+      "sourceMap": true,
+      "baseUrl":"./",
+      "target": "es6",
+      "outDir": "./build",
+      "strict": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "skipLibCheck": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "module": "commonjs",
+      "resolveJsonModule": true,
+    },
+    "include": ["./**/*.ts"],
+    "exclude": ["node_modules/**/*", ".serverless/**/*", ".webpack/**/*", "_warmup/**/*", ".vscode/**/*"]
+  }
