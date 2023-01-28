@@ -11,6 +11,12 @@
       "esModuleInterop": true,
       "removeComments": true,
       "sourceMap": true,
+      "allowSyntheticDefaultImports": true,
+      "skipLibCheck": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "resolveJsonModule": true,
+      "baseUrl": "./",
       "lib": [
         "esnext"
       ],

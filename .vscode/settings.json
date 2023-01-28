@@ -3,7 +3,9 @@
       "editor.defaultFormatter": "vscode.typescript-language-features",
       "editor.tabSize": 2,
       "editor.insertSpaces": true,
-      "editor.detectIndentation":false
+      "editor.detectIndentation":false,
+      "editor.formatOnPaste": true,
+      "editor.formatOnSave": true
   },
     "editor.autoIndent": "full",
     "editor.tabSize": 2,
@@ -12,5 +14,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll": true
     },
-    "editor.bracketPairColorization.enabled": true
+    "editor.bracketPairColorization.enabled": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
   }
