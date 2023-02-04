@@ -1,3 +1,7 @@
 export const handlerPath = (context: string) => {
-    return `${context.split(process.cwd())[1].substring(1).replace(/\\/g, '/')}`;
-}
+  const path = `${context
+    .split(process.cwd())[1]
+    .substring(1)
+    .replace(/\\/g, '/')}`;
+  return path;
+};

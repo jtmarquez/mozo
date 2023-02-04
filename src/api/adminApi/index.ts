@@ -3,7 +3,7 @@ import { handlerPath } from '../../../libs/utils/handlerResolver';
 import { provisionedConcurrency } from '../../../serverless.config/global.config';
 
 const graphqlAdminApi = {
-  handler: `${handlerPath(__dirname)}/graphql.graphqlHandler`,
+  handler: `${handlerPath(__dirname)}/graphql.handler`,
   runtime: 'nodejs14.x' as AwsLambdaRuntime,
   provisionedConcurrency,
   events: [

@@ -1,8 +1,9 @@
 import type { AWS } from '@serverless/typescript';
+import { region } from 'serverless.config/global.config';
 import apiFunctions from 'src/api';
 
 const serverlessConfiguration: AWS = {
-  service: 'sls',
+  service: 'mozo',
   frameworkVersion: '3',
   useDotenv: true,
   package: {
@@ -15,13 +16,10 @@ const serverlessConfiguration: AWS = {
         NODE_ENV: 'development',
       },
     },
-    region: '${env:AWS_REGION}',
+    region,
     webpack: {
       webpackConfig: './webpack.config.js',
       includeModules: {
-        // You can delete this setting if you dont use aws-sdk.
-        // If you use it, this setting will exclude it from the bundle,
-        // since its included inside the lambda by default
         forceExclude: 'aws-sdk',
       },
     },
@@ -29,7 +27,7 @@ const serverlessConfiguration: AWS = {
   plugins: ['serverless-webpack', 'serverless-offline'],
   provider: {
     name: 'aws',
-    region: '${self:custom.region}' as any,
+    region,
     runtime: 'nodejs14.x',
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -42,7 +40,6 @@ const serverlessConfiguration: AWS = {
       ENV: '${self:custom.stage}',
       REGION: '${self:custom.region}',
     },
-    lambdaHashingVersion: '20201221',
   },
   functions: {
     ...apiFunctions,

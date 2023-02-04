@@ -1,22 +1,22 @@
 const getStage = () => {
-    let stage = 'local';
-    const stageIndex = process.argv.indexOf('--stage');
-    if (stageIndex > -1) {
-      stage = process.argv[stageIndex + 1];
-    }
-    return stage;
-  };
+  let stage = 'local';
+  const stageIndex = process.argv.indexOf('--stage');
+  if (stageIndex > -1) {
+    stage = process.argv[stageIndex + 1];
+  }
+  return stage;
+};
 
 const getProvisionedConcurrency = () => {
-    switch (getStage()) {
-      case 'prod':
-        return 1;
-      default:
-        return undefined;
-    }
-  };
+  switch (getStage()) {
+    case 'prod':
+      return 1;
+    default:
+      return undefined;
+  }
+};
 
-  type Region =
+type Region =
   | 'us-east-1'
   | 'us-east-2'
   | 'us-gov-east-1'
@@ -56,4 +56,4 @@ const getRegion = (): Region => {
 };
 
 export const region = getRegion();
-  export const provisionedConcurrency = getProvisionedConcurrency();
+export const provisionedConcurrency = getProvisionedConcurrency();
