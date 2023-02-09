@@ -5,7 +5,6 @@ import schema from './schema';
 
 const server = new ApolloServer({
   schema,
-  mockEntireSchema: true,
   formatError: (error) => error,
   formatResponse: (response: any) => {
     if (response.errors) {
