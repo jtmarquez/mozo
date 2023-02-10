@@ -9,6 +9,8 @@
     "codegen:public": "graphql-codegen --config src/api/publicApi/codegen.yml",
     "codegen:admin": "graphql-codegen --config src/api/adminApi/codegen.yml",
     "codegen": "npm run codegen:public; npm run codegen:admin",
+    "sequelize:migrate": "source .env.$STAGE && npx sequelize-cli db:migrate --url $SEQUELIZE_URL",
+    "sequelize:migrate:revert": "source .env.$STAGE && npx sequelize-cli db:migrate:undo --url $SEQUELIZE_URL",
     "prettier": "prettier --write src/**/*.ts",
     "lint": "eslint './src' './serverless.config' './libs' --ext .ts",
     "lint:strict": "eslint './src' './serverless.config' './libs' --ext .ts --max-warnings=0"
@@ -39,6 +41,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "fork-ts-checker-webpack-plugin": "^7.3.0",
     "prettier": "^2.8.3",
+    "sequelize-cli": "^6.6.0",
     "serverless": "^3.26.0",
     "serverless-dotenv-plugin": "^4.0.2",
     "serverless-offline": "^12.0.4",
