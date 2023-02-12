@@ -2,10 +2,15 @@ import { ApolloServer } from 'apollo-server-lambda';
 import { Event } from 'libs/utils/graphqlTypes';
 import { Context, Callback } from 'aws-lambda';
 import schema from './schema';
+import getConnection from 'src/services/config/db/getConnection';
+import { Sequelize } from 'sequelize-typescript';
+
+interface ContextWrapper extends Context {
+  connection: Sequelize | undefined;
+}
 
 const server = new ApolloServer({
   schema,
-  mockEntireSchema: true,
   formatError: (error) => error,
   formatResponse: (response: any) => {
     if (response.errors) {
@@ -13,14 +18,22 @@ const server = new ApolloServer({
     }
     return response;
   },
+  context: async ({ event, context }) => {
+    const sequelize = await getConnection();
+    return {
+      event,
+      context,
+      headers: event.headers,
+      connection: sequelize,
+    };
+  },
 });
 
 exports.graphqlHandler = (
   event: Event,
-  context: Context,
+  context: ContextWrapper,
   callback: Callback,
 ) => {
-  console.log('lleguye aqui');
   const graphql = server.createHandler({
     expressGetMiddlewareOptions: {
       cors: {
@@ -28,5 +41,10 @@ exports.graphqlHandler = (
       },
     },
   });
-  return graphql(event, context, callback);
+
+  try {
+    return graphql(event, context, callback);
+  } finally {
+    context.connection?.close();
+  }
 };
