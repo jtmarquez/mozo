@@ -40,11 +40,12 @@ module.exports = {
         // Include ts, tsx, js, and jsx files.
         test: /\.ts?$/,
         exclude: [/node_modules/, /\.serverless/, /\.webpack/],
-        use: ['babel-loader'],
+        use: ['ts-loader'],
       },
     ],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
   ],
+  watch: process.env.NODE_ENV === 'development',
 };
