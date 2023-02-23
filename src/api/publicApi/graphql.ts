@@ -5,7 +5,7 @@ import schema from './schema';
 import getConnection from 'src/services/config/db/getConnection';
 import { Sequelize } from 'sequelize-typescript';
 
-interface ContextWrapper extends Context {
+export interface ContextWrapper extends Context {
   connection: Sequelize | undefined;
 }
 
