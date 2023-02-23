@@ -1,0 +1,7 @@
+overwrite: true
+schema: 'http://localhost:3000/graphql-restaurant-api'
+generates:
+  src/api/restaurantApi/generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
