@@ -14,10 +14,10 @@ import {
 
 @Table
 export default class BaseModelEntity extends Model {
-  @PrimaryKey
-  @Column
   @IsUUID(4)
+  @PrimaryKey
   @Default(DataType.UUIDV4)
+  @Column
   declare id: string;
 
   @AllowNull(false)
