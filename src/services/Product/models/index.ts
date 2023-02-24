@@ -40,4 +40,10 @@ export class Product extends BaseModelEntity {
     allowNull: false,
   })
   cost!: number;
+
+  @Column({
+    type: DataType.TEXT('medium'),
+    allowNull: false,
+  })
+  name!: string;
 }

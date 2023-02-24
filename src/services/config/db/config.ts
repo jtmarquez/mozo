@@ -1,4 +1,5 @@
 import { SequelizeOptions } from 'sequelize-typescript';
+import models from '../entities';
 
 const CURRENT_LAMBDA_FUNCTION_TIMEOUT = 15000;
 
@@ -11,6 +12,7 @@ const databaseConfig: SequelizeOptions = {
     acquire: 3000,
     evict: CURRENT_LAMBDA_FUNCTION_TIMEOUT,
   },
+  models,
 };
 
 export default databaseConfig;

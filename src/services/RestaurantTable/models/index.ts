@@ -19,7 +19,7 @@ export class RestaurantTable extends BaseModelEntity {
   state!: RestaurantTableState;
 
   @ForeignKey(() => Restaurant)
-  @Column({ allowNull: false })
+  @Column({ type: DataType.UUIDV4 })
   restaurantId!: string;
 
   @BelongsTo(() => Restaurant)
