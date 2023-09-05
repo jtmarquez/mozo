@@ -1,4 +1,4 @@
-# Mozo
+# Mozo - WIP
 
 A small project made for restaurants with high amounts of group clients, this is, tables with many clients, who usually want to pay seperatelly.
 
